@@ -1,9 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const { Router } = require('express');
+const debug = require('debug')('neo4j-tutorial:route');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+const usersCtrl = require('../controllers/users');
+
+const router = Router();
+
+/* POST create user */
+router.post('/', (req, res) => {
+  debug(req.body);
+  usersCtrl.create(req.body)
+    .then((result) => {
+      debug(result);
+      res.json(result);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    })
 });
 
 module.exports = router;
