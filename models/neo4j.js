@@ -6,7 +6,7 @@ const driver = neo4j.driver('bolt://localhost', neo4j.auth.basic('neo4j', 'root'
 const constraintStmt = 'CREATE CONSTRAINT ON (user:User) ASSERT user.email IS UNIQUE';
 
 driver.onCompleted = () => {
-  console.log('Driver succesful');
+  debug('Driver succesful');
   const session = driver.session();
   session.run(constraintStmt)
     .then(() => {

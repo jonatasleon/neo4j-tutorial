@@ -8,12 +8,6 @@ function create(user) {
     .then(result => {
       db.close();
       return result;
-    })
-    .catch((err) => {
-      console.error(err);
-      console.log(Object.keys(err));
-      err.code = 10;
-      throw err;
     });
 }
 
