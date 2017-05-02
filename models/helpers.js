@@ -1,8 +1,9 @@
 module.exports = {
   mapRecord: (label) => (record) => {
-    return Object.assign({
+    const target = {
       id: record.toObject()[label].identity.toInt()
-    }, record.toObject()[label].properties)
+    };
+    return Object.assign(target, record.toObject()[label].properties);
   },
   defaultCatch: (db) => (err) => {
     db.close();
