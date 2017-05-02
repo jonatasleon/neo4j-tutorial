@@ -14,11 +14,6 @@ describe('Controllers: Tasklists', () => {
         name: 'Test Book 1',
         created_at: '2016-10-08T19:03:02.923Z',
         description: 'Some desc here',
-      }, {
-        id: 2,
-        name: 'Test Book 2',
-        created_at: '2016-10-08T19:03:02.923Z',
-        description: 'Another desc here',
       }];
 
       td.when(Tasklist.getAll()).thenResolve(expectedResponse);
