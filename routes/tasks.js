@@ -15,4 +15,10 @@ router.post('/', (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
+router.get('/', (req, res) => {
+  taskCtrl.getAll()
+    .then(tasks => res.json(tasks))
+    .catch(err => res.status(500).json(err));
+});
+
 module.exports = router;

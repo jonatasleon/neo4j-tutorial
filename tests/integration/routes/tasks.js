@@ -19,7 +19,8 @@ describe('Routes Tasks', () => {
       .then(() => Tasks.deleteAll())
       .then(() => Tasklists.create(defaultTasklist))
       .then((_tasklist) => {
-        defaultTask.owner = tasklist = _tasklist;
+        tasklist = _tasklist;
+        defaultTask.owner = tasklist.id;
       })
       .then(() => Tasks.create(defaultTask))
       .then((task) => {
@@ -47,6 +48,23 @@ describe('Routes Tasks', () => {
         description: 'New Task description',
         owner: tasklist
       };
+
+      request.post('/api/tasks')
+        .send(newTask)
+        .end((err, res) => {
+          expect(res.body.name).to.be.eql(newTask.name);
+          expect(res.body.description).to.be.eql(newTask.description);
+
+          done(err);
+        });
+    });
+
+    it('should create a task that have a tasklist id as owner', (done) => {
+      const newTask = {
+        name: 'Another new task',
+        description: 'Another new task description',
+        owner: tasklist.id,
+      }
 
       request.post('/api/tasks')
         .send(newTask)

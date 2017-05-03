@@ -47,6 +47,36 @@ describe('Controllers: Tasks', () => {
       const requestBody = {
         name: 'Default Task',
         description: 'Default Task Description',
+        owner: 2,
+      };
+
+      const expectedResponse = {
+        id: 3,
+        name: 'Default Task',
+        description: 'Default Task Description',
+        created_at: '2016-10-08T19:03:02.923Z',
+        owner,
+      }
+
+      td.when(Task.create(requestBody)).thenResolve(expectedResponse);
+
+      const taskCtrl = TaskController(Task);
+      taskCtrl.create(requestBody)
+        .then((task) => {
+          expect(task).to.be.eql(expectedResponse);
+        });
+    });
+
+    it('should create a task with tasklist id', () => {
+      const Task = {
+        create: td.function(),
+      }
+
+      const owner = 2;
+
+      const requestBody = {
+        name: 'Default Task',
+        description: 'Default Task Description',
         owner
       };
 
@@ -65,7 +95,6 @@ describe('Controllers: Tasks', () => {
         .then((task) => {
           expect(task).to.be.eql(expectedResponse);
         });
-
-    })
-  })
+    });
+  });
 });

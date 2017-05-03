@@ -5,6 +5,10 @@ module.exports = (taskModel) => ({
     return taskModel.getAll(owner);
   },
   create: (task) => {
-    return taskModel.create(Object.assign(task, {owner: task.owner.id}));
+    const ownerId = {
+      owner: isNaN(task.owner) ? task.owner.id : task.owner
+    };
+
+    return taskModel.create(Object.assign(task, ownerId));
   },
 });
