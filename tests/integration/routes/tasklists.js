@@ -40,8 +40,8 @@ describe('Routes Tasklists', () => {
 
           done(err);
         });
-    })
-  })
+    });
+  });
 
   describe('Route POST /api/tasklists', () => {
     it('should create a tasklist', (done) => {
@@ -58,7 +58,6 @@ describe('Routes Tasklists', () => {
 
           done(err);
         });
-    })
-  })
-
+    });
+  });
 });

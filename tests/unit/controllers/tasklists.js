@@ -1,13 +1,11 @@
 const TasklistController = require('../../../controllers/tasklists');
 
 describe('Controllers: Tasklists', () => {
-
   describe('Get all tasklists: getAll()', () => {
-
     it('should return all tasklists', () => {
       const Tasklist = {
         getAll: td.function(),
-      }
+      };
 
       const expectedResponse = [{
         id: 1,
@@ -20,7 +18,7 @@ describe('Controllers: Tasklists', () => {
 
       const tasklistCtrl = TasklistController(Tasklist);
       return tasklistCtrl.getAll()
-        .then((response) => expect(response).to.be.eql(expectedResponse));
+        .then(response => expect(response).to.be.eql(expectedResponse));
     });
   });
 
@@ -44,7 +42,7 @@ describe('Controllers: Tasklists', () => {
         .then((response) => {
           expect(response).to.be.eql(expectedResponse);
         });
-    })
+    });
   });
 
   describe('Create a tasklist: create()', () => {

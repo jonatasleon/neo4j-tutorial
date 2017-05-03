@@ -23,9 +23,7 @@ describe('Routes Tasks', () => {
         defaultTask.owner = tasklist.id;
       })
       .then(() => Tasks.create(defaultTask))
-      .then((task) => {
-        done();
-      })
+      .then(() => done())
       .catch(err => done(err));
   });
 
@@ -46,7 +44,7 @@ describe('Routes Tasks', () => {
       const newTask = {
         name: 'New task',
         description: 'New Task description',
-        owner: tasklist
+        owner: tasklist,
       };
 
       request.post('/api/tasks')
@@ -64,7 +62,7 @@ describe('Routes Tasks', () => {
         name: 'Another new task',
         description: 'Another new task description',
         owner: tasklist.id,
-      }
+      };
 
       request.post('/api/tasks')
         .send(newTask)

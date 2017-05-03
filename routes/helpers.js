@@ -9,5 +9,5 @@ const errorReponse = (message, statusCode = 500) => defaultResponse({
 
 module.exports = {
   defaultResponse,
-  errorReponse
+  errorReponse,
 };

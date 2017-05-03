@@ -2,12 +2,10 @@ const { Router } = require('express');
 const debug = require('debug')('neo4j-tutorial:route');
 
 const TasksController = require('../controllers/tasks');
-const task = require('../models/tasks');
-
-const { errorReponse } = require('./helpers');
+const taskModel = require('../models/tasks');
 
 const router = Router();
-const taskCtrl = TasksController(task);
+const taskCtrl = TasksController(taskModel);
 
 router.post('/', (req, res) => {
   taskCtrl.create(req.body)

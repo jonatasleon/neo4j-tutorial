@@ -2,10 +2,10 @@ const { Router } = require('express');
 const debug = require('debug')('neo4j-tutorial:route');
 
 const TasklistsController = require('../controllers/tasklists');
-const tasklist = require('../models/tasklists');
+const tasklistModel = require('../models/tasklists');
 
 const router = Router();
-const tasklistsCtrl = TasklistsController(tasklist);
+const tasklistsCtrl = TasklistsController(tasklistModel);
 
 router.get('/', (req, res) => {
   tasklistsCtrl.getAll()
@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  console.log(req.params);
   tasklistsCtrl.getById(req.params.id)
     .then(tasklist => res.json(tasklist))
     .catch(err => res.status(500).json(err));

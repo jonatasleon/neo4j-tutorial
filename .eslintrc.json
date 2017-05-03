@@ -1,0 +1,29 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "semi": 2,
+    "no-unused-vars": [
+      "error", {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^[Dd]ebug$"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error", {
+        "devDependencies": true
+      }
+    ]
+  },
+  "globals": {
+    "describe": true,
+    "app": true,
+    "beforeEach": true,
+    "before": true,
+    "it": true,
+    "request": true,
+    "expect": true,
+    "td": true,
+    "Joi": true,
+    "joiAssert": true
+  }
+}
